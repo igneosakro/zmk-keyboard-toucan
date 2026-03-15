@@ -83,14 +83,14 @@
                     timeout-ms = <100>;
                     key-positions = <KEY_LALT KEY_SPACE>;
                     slow-release;
-                    bindings = <&mo FUNCTION>;
+                    bindings = <&mo NUMBERS>;
                     layers = <BASE FUNCTION>;
                 };
                 combo_mo_numbers_alt {
                     timeout-ms = <100>;
                     key-positions = <KEY_ENTER KEY_DEL>;
                     slow-release;
-                    bindings = <&mo FUNCTION>;
+                    bindings = <&mo NUMBERS>;
                     layers = <BASE FUNCTION>;
                 };
                 combo_mo_mouse {
