@@ -19,9 +19,9 @@
 #define SYMBOLS 3
 #define MOUSE 4
 #define WASD 5
-#define GAME 6
-#define GAME_2 7
-#define GAME_FN 8
+#define ESDF 6
+#define RETRO 7
+#define GAMING 8
 
 #define KEY_TAB 0
 #define KEY_T 5
@@ -72,6 +72,13 @@
                     bindings = <&mo FUNCTION>;
                     layers = <BASE>;
                 };
+                combo_mo_numbers {
+                    timeout-ms = <100>;
+                    key-positions = <KEY_ENTER KEY_DEL>;
+                    slow-release;
+                    bindings = <&mo NUMBERS>;
+                    layers = <BASE>;
+                };
                 combo_mo_mouse {
                     timeout-ms = <50>;
                     key-positions = <KEY_LALT KEY_SPACE>;
@@ -87,33 +94,45 @@
                 };
                 combo_to_wasd {
                     timeout-ms = <50>;
-                    key-positions = <KEY_ENTER KEY_WIN KEY_LALT KEY_SPACE>;
+                    key-positions = <KEY_WIN KEY_LALT KEY_SPACE>;
                     bindings = <&to WASD>;
                     layers = <BASE>;
                 };
-                combo_to_game {
+                combo_to_wasd_alt {
                     timeout-ms = <50>;
-                    key-positions = <KEY_WIN KEY_LALT KEY_SPACE>;
-                    bindings = <&to GAME>;
+                    key-positions = <KEY_LCTRL KEY_RCTRL>;
+                    bindings = <&to WASD>;
                     layers = <BASE>;
                 };
-                combo_to_game2 {
+                combo_to_esdf {
+                    timeout-ms = <50>;
+                    key-positions = <KEY_ENTER KEY_WIN KEY_LALT KEY_SPACE>;
+                    bindings = <&to ESDF>;
+                    layers = <BASE>;
+                };
+                combo_to_retro {
                     timeout-ms = <50>;
                     key-positions = <KEY_SPACE KEY_ENTER KEY_RALT KEY_DEL>;
-                    bindings = <&to GAME_2>;
+                    bindings = <&to RETRO>;
                     layers = <BASE>;
                 };
                 combo_to_base {
                     timeout-ms = <50>;
                     key-positions = <KEY_WIN KEY_LALT KEY_SPACE>;
                     bindings = <&to BASE>;
-                    layers = <MOUSE WASD GAME GAME_2>;
+                    layers = <MOUSE WASD ESDF RETRO>;
                 };
                 combo_to_base_alt {
                     timeout-ms = <50>;
                     key-positions = <KEY_ENTER KEY_RALT KEY_DEL>;
                     bindings = <&to BASE>;
-                    layers = <MOUSE WASD GAME GAME_2>;
+                    layers = <MOUSE WASD ESDF RETRO>;
+                };
+                combo_to_base_opt {
+                    timeout-ms = <50>;
+                    key-positions = <KEY_LCTRL KEY_RCTRL>;
+                    bindings = <&to BASE>;
+                    layers = <MOUSE WASD ESDF RETRO>;
                 };
                 combo_caps_word {
                     timeout-ms = <50>;
@@ -123,7 +142,7 @@
                 };
                 combo_bt_clr {
                     timeout-ms = <100>;
-                    key-positions = <KEY_H KEY_TILDE>;
+                    key-positions = <KEY_TAB KEY_BACKSPACE>;
                     bindings = <&bt BT_CLR>;
                     layers = <FUNCTION>;
                 };
@@ -184,8 +203,8 @@
                 mouse {
                         display-name = "Mice";
                         bindings = <
-   &kp ESC             &kp CAPS            &kp Q               &kp W               &kp E               &kp R                                   &msc SCRL_UP        &msc SCRL_LEFT      &mmv MOVE_UP        &msc SCRL_RIGHT     &msc SCRL_UP        &kp BSPC
-   &kp TAB             &kp LSHFT           &kp A               &kp S               &kp D               &kp F                                   &msc SCRL_DOWN      &mmv MOVE_LEFT      &mmv MOVE_DOWN      &mmv MOVE_RIGHT     &msc SCRL_DOWN      &kp RSHFT
+   &kp ESC             &kp CAPS            &kp Q               &kp W               &kp E               &kp R                                   &msc SCRL_UP        &msc SCRL_LEFT      &mmv MOVE_UP        &msc SCRL_RIGHT     &mkp MB5            &kp BSPC
+   &kp TAB             &kp LSHFT           &kp A               &kp S               &kp D               &kp F                                   &msc SCRL_DOWN      &mmv MOVE_LEFT      &mmv MOVE_DOWN      &mmv MOVE_RIGHT     &mkp MB4            &kp RSHFT
    &kp LCTRL           &kp N1              &kp N2              &kp N3              &kp N4              &kp N5                                  &bt BT_DISC 0       &bt BT_DISC 1       &bt BT_DISC 2       &bt BT_DISC 3       &bt BT_DISC 4       &kp RCTRL
                                                                &kp G               &kp LALT            &kp SPACE                               &mkp MB1            &mkp MB3            &mkp MB2
                         >;
@@ -197,32 +216,32 @@
    &kp T               &kp TAB             &kp Q               &kp W               &kp E               &kp R                                   &kp Y               &kp U               &kp I               &kp O               &kp P               &kp BSPC
    &kp G               &kp LSHIFT          &kp A               &kp S               &kp D               &kp F                                   &kp H               &kp J               &kp K               &kp L               &kp SEMI            &mt RSHIFT SQT
    &kp B               &kp LCTRL           &kp Z               &kp X               &kp C               &kp V                                   &kp N               &kp M               &kp COMMA           &kp DOT             &kp FSLH            &kp RCTRL
-                                                               &kp LALT            &mo GAME_FN         &kp SPACE                               &kp RET             &kp RALT            &kp DEL
+                                                               &kp LALT            &mo GAMING          &kp SPACE                               &kp RET             &kp RALT            &kp DEL
                         >;
                 };
 
-                game {
-                        display-name = "Game";
+                esdf {
+                        display-name = "ESDF";
                         bindings = <
    &kp TAB             &kp Q               &kp W               &kp E               &kp R               &kp T                                   &kp Y               &kp U               &kp I               &kp O               &kp P               &kp BSPC
    &kp LSHIFT          &kp A               &kp S               &kp D               &kp F               &kp G                                   &kp H               &kp J               &kp K               &kp L               &kp SEMI            &mt RSHIFT SQT
    &kp LCTRL           &kp Z               &kp X               &kp C               &kp V               &kp B                                   &kp N               &kp M               &kp COMMA           &kp DOT             &kp FSLH            &kp RCTRL
-                                                               &kp LALT            &mo GAME_FN         &kp SPACE                               &kp RET             &kp RALT            &kp DEL
+                                                               &kp LALT            &mo GAMING          &kp SPACE                               &kp RET             &kp RALT            &kp DEL
                         >;
                 };
 
-                game_2 {
-                        display-name = "Game Alt.";
+                retro {
+                        display-name = "Emu";
                         bindings = <
    &kp TAB             &kp Q               &kp W               &kp E               &kp R               &kp T                                   &kp GRAVE           &kp HOME            &kp UP              &kp END             &kp PG_UP           &kp BSPC
    &kp LSHIFT          &kp A               &kp S               &kp D               &kp F               &kp G                                   &kp TILDE           &kp LEFT            &kp DOWN            &kp RIGHT           &kp PG_DN           &kp RSHIFT
    &kp LCTRL           &kp Z               &kp X               &kp C               &kp V               &kp B                                   &kp PSCRN           &kp F12             &none               &none               &none               &kp RCTRL
-                                                               &kp LALT            &mo GAME_FN         &kp SPACE                               &kp RET             &kp RALT            &kp DEL
+                                                               &kp LALT            &mo GAMING          &kp SPACE                               &kp RET             &kp RALT            &kp DEL
                         >;
                 };
 
-                game_fn {
-                        display-name = "Game Func";
+                gaming {
+                        display-name = "Game";
                         bindings = <
    &kp ESC             &kp N6              &kp N7              &kp N8              &kp N9              &kp N0                                  &kp GRAVE           &kp HOME            &kp UP              &kp END             &kp PG_UP           &kp BSPC
    &mt LSHIFT CAPS     &kp N1              &kp N2              &kp N3              &kp N4              &kp N5                                  &kp TILDE           &kp LEFT            &kp DOWN            &kp RIGHT           &kp PG_DN           &kp DEL
